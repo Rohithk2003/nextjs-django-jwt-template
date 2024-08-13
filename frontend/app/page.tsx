@@ -1,10 +1,11 @@
-import Navbar from "@/components/navbar";
-import Image from "next/image";
+import AboutUs from "@/components/aboutus";
+import Contact from "@/components/contact";
 
 export default function Home() {
 	return (
 		<main>
-			<Navbar />
+			<AboutUs />
+			<Contact />
 		</main>
 	);
 }

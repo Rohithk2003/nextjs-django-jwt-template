@@ -16,12 +16,14 @@ const config: Config = {
 			colors: {
 				navbar: "#f7f9fc",
 				primary: "#223C6B",
+				footer: "#6497B1",
 			},
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
+				arial: ["Arial", "sans-serif"],
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require("tailwind-hamburgers")],
 };
 export default config;
