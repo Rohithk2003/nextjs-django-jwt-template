@@ -12,9 +12,9 @@ export default function Contact() {
 	const [moveMessage, setMoveMessage] = useState(false);
 	return (
 		<div className="grid grid-cols-1 xl:grid-cols-3 w-full min-h-screen">
-			<div className="bg-primary flex p-5 min-h-96 h-full justify-center items-center col-span-1">
+			<div className="bg-primary text-white flex p-5 min-h-96 h-full justify-center items-center col-span-1">
 				<div className="text-white flex flex-col gap-10">
-					<h1 className="text-3xl font-bold">Contact Information</h1>
+					<h1 className="text-3xl font-bold ">Contact Information</h1>
 					<div className="flex flex-row justify-start gap-11 items-center">
 						<FaPhoneVolume size={22} />
 						<span className="text-xl font-bold pl-1">+971 50 294 6487</span>
@@ -38,18 +38,19 @@ export default function Contact() {
 			</div>
 
 			<div className="bg-white min-h-[80vh] col-span-2 flex w-full justify-center items-center">
-				<main className="py-14">
-					<div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
-						<div className="max-w-lg mx-auto space-y-3 sm:text-center">
+				<main className="py-14 w-full flex justify-center items-center">
+					<div className="max-w-screen-4xl px-4 text-gray-600 md:px-8">
+						<div className="max-w-2xl space-y-3 sm:text-center">
 							<h3 className="text-primary font-semibold">Contact</h3>
 							<p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
 								Get in touch
 							</p>
 							<p>
-								We’d love to hear from you! Please fill out the form bellow.
+								We&apos;d love to hear from you! Please fill out the form
+								bellow.
 							</p>
 						</div>
-						<div className="mt-12 max-w-lg mx-auto">
+						<div className="mt-12 max-w-7xl ">
 							<form
 								onSubmit={(e) => e.preventDefault()}
 								className="space-y-5"

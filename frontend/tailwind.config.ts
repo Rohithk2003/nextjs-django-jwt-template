@@ -21,9 +21,11 @@ const config: Config = {
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
 				arial: ["Arial", "sans-serif"],
+				roboto: ["Roboto", "sans-serif"],
+				poppins: ["Poppins", "sans-serif"],
 			},
 		},
 	},
-	plugins: [require("tailwind-hamburgers")],
+	plugins: [require("tailwind-hamburgers"), require("tailwindcss-animate")],
 };
 export default config;

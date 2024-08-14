@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRef, useState } from "react";
+import { FaQ } from "react-icons/fa6";
 
 const FaqsCard = (props: {
 	faqsList: {
@@ -76,7 +77,7 @@ const FaqsCard = (props: {
 	);
 };
 
-export default () => {
+export default function FAQ() {
 	const faqsList = [
 		{
 			q: "What are some random questions to ask?",
@@ -101,7 +102,7 @@ export default () => {
 	];
 
 	return (
-		<section className="leading-relaxed max-w-screen-3xl min-h-screen mt-12 mx-auto px-4 md:px-8">
+		<section className="leading-relaxed max-w-screen-3xl min-h-[80vh] mt-12 mx-auto px-4 md:px-8">
 			<div className="space-y-3 text-center ">
 				<h1 className="text-3xl text-gray-800 font-semibold">
 					Frequently Asked Questions
@@ -115,10 +116,11 @@ export default () => {
 				{faqsList.map((item, idx) => (
 					<FaqsCard
 						idx={idx}
+						key={idx}
 						faqsList={item}
 					/>
 				))}
 			</div>
 		</section>
 	);
-};
+}
