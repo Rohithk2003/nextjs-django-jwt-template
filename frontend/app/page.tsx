@@ -3,6 +3,7 @@ import Contact from "@/components/contact";
 import CurvedDiv from "@/components/Curved";
 import Faq from "@/components/faq";
 import Hero from "@/components/hero";
+import Services from "@/components/services";
 import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
@@ -12,6 +13,7 @@ export default function Home() {
 		<main className="relative font-montseraat">
 			<Hero />
 			<AboutUs />
+			<Services />
 			<Faq />
 			<Contact />
 			<div className="fixed z-[5000] bottom-10 flex flex-col items-end gap-2 right-10">

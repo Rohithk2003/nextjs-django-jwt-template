@@ -3,15 +3,15 @@ import "./hero.css";
 import Carousel from "../Carousel";
 const slides = [
 	{
-		image: "/hero/1.jpg",
+		image: "/hero/1.png",
 		alt: "Slide 1",
 	},
 	{
-		image: "/hero/2.jpg",
+		image: "/hero/2.png",
 		alt: "Slide 2",
 	},
 	{
-		image: "/hero/3.jpg",
+		image: "/hero/3.png",
 		alt: "Slide 3",
 	},
 ];
@@ -24,12 +24,12 @@ const Hero = () => {
 				<Carousel slides={slides} />
 
 				<div
-					className={`absolute  z-[998] gap-4 px-20 flex-col myDiv scroll-smooth  mr-10 left-0 top-0 h-full w-1/3 flex justify-center items-center p-5  text-white text-start   text-4xl `}
+					className={`absolute  z-[998] gap-7 px-20 flex-col text-start myDiv scroll-smooth  mr-10 left-0 top-0 h-full w-1/2 flex justify-center items-start p-5  text-white  text-7xl `}
 				>
 					<span className="text-blue-300">
 						Unique Auditing & Tax Consultancy LLC
 					</span>
-					<span className="text-lg">
+					<span className="text-2xl text-start">
 						Empowering Your Business with Expert Auditing & Financial Services.
 					</span>
 					<div className="flex flex-row text-lg gap-5 justify-start w-full">
