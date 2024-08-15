@@ -12,7 +12,7 @@ export default function Contact() {
 	const [moveMessage, setMoveMessage] = useState(false);
 	return (
 		<div className="grid grid-cols-1 xl:grid-cols-3 w-full min-h-screen">
-			<div className="bg-primary text-white flex p-5 min-h-96 h-full justify-center items-center col-span-1">
+			<div className="bg-primary text-white  font-montseraat flex p-5 min-h-96 h-full justify-center items-center col-span-1">
 				<div className="text-white flex flex-col gap-10">
 					<h1 className="text-3xl font-bold ">Contact Information</h1>
 					<div className="flex flex-row justify-start gap-11 items-center">

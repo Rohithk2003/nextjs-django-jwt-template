@@ -4,7 +4,7 @@ import { PiCopyrightLight } from "react-icons/pi";
 
 export default function Footer() {
 	return (
-		<footer className="flex flex-col gap-2 bg-footer text-white sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+		<footer className="flex flex-col gap-2 bg-footer font-montseraat text-white sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
 			<p className="text-[15px] text-muted-foreground">
 				&copy; 2024 Unique Auditing & Tax Consultancy LLC. All rights reserved.
 			</p>

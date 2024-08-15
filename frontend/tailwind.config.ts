@@ -23,6 +23,7 @@ const config: Config = {
 				arial: ["Arial", "sans-serif"],
 				roboto: ["Roboto", "sans-serif"],
 				poppins: ["Poppins", "sans-serif"],
+				montseraat:["Montserrat","sans-serif"]
 			},
 		},
 	},

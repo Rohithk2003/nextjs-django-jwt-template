@@ -1,5 +1,6 @@
 import AboutUs from "@/components/aboutus";
 import Contact from "@/components/contact";
+import CurvedDiv from "@/components/Curved";
 import Faq from "@/components/faq";
 import Hero from "@/components/hero";
 import Link from "next/link";
@@ -8,12 +9,12 @@ import { FiMail } from "react-icons/fi";
 
 export default function Home() {
 	return (
-		<main className="relative">
+		<main className="relative font-montseraat">
 			<Hero />
 			<AboutUs />
 			<Faq />
 			<Contact />
-			<div className="fixed z-20 bottom-10 flex flex-col items-end gap-2 right-10">
+			<div className="fixed z-[5000] bottom-10 flex flex-col items-end gap-2 right-10">
 				<Link
 					href="/"
 					className="bg-green-500 p-2 rounded-full size-10 flex justify-center items-center"

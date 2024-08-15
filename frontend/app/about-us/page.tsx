@@ -93,7 +93,7 @@ export default function AboutUs() {
 										<div className="grid gap-1">
 											<h3 className="text-xl font-bold">Taxation</h3>
 											<p className="text-muted-foreground">
-												Our tax experts ensure you're compliant with all
+												Our tax experts ensure you&apos;re compliant with all
 												relevant regulations and help you maximize your tax
 												savings, allowing you to focus on growing your business.
 											</p>
