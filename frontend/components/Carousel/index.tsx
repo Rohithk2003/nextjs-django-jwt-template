@@ -17,20 +17,20 @@ const Carousel = ({
 	const [activeSlide2, setActiveSlide2] = useState(0);
 
 	const settings = {
-		dots: false,
+		dots: true,
 		infinite: true,
 		speed: 1000,
 		arrows: true,
 		slidesToShow: 1,
-		lazyLoad: "progressive",
+		lazyLoad: "progressive" as any,
 		fade: true,
 		slidesToScroll: 1,
 		autoplay: true,
-		centerPadding: 0,
+		centerPadding: "0",
 		className: "slider variable-width",
 		centerMode: true,
 		pauseOnHover: false,
-		autoplaySpeed: 5000,
+		autoplaySpeed: 3000,
 		adaptiveHeight: true, // Adjusts slide height to the content
 		beforeChange: (current: any, next: any) => {
 			setOldSlide(current);
@@ -47,15 +47,15 @@ const Carousel = ({
 		],
 	};
 
-	const slider = useRef();
+	const slider: any = useRef();
 
 	return (
-		<div className="relative h-[100vh] w-full   overflow-hidden">
+		<div className="relative h-[100vh] w-screen   overflow-hidden">
 			<div className="absolute bg-black opacity-50 z-[21] w-full h-full"></div>
 			<Slider
 				{...settings}
 				ref={slider}
-				className=" md:h-screen relative z-20 h-max "
+				className=" md:h-screen relative z-20 h-max w-full "
 			>
 				{slides.map(
 					(
@@ -68,14 +68,14 @@ const Carousel = ({
 						return (
 							<div
 								key={index}
-								className="w-screen h-full "
+								className="w-full h-full "
 							>
 								<Image
 									src={slide.image}
 									data-index={index}
 									priority={true}
 									alt={`slide ${index}`}
-									className=" object-center  object-cover h-screen bg-center "
+									className=" object-top w-full  object-cover h-screen bg-center "
 									style={{
 										animation:
 											activeSlide === index

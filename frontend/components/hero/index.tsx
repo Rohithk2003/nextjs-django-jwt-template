@@ -17,7 +17,7 @@ const slides = [
 ];
 const Hero = () => {
 	return (
-		<div className="relative h-max">
+		<div className="relative h-max w-screen bg-white">
 			<div className="shape w-full absolute z-[100] -bottom-28 h-44 "></div>
 
 			<div className="flex justify-center items-center relative w-full h-full z-[51] ">
