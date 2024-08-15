@@ -149,7 +149,7 @@ export default function Navbar() {
 							</a>
 						</li>
 						<li>
-							<button className="bg-primary rounded-full hover:bg-primary/80 transition-all font-montseraat duration-300 ease-in-out text-white px-6 font-bold py-2">
+							<button className="bg-transparent border hover:bg-primary rounded-full  text-white hover:text-white transition-all font-montseraat duration-300 ease-in-out  px-6 font-bold py-3">
 								Book Consultation
 							</button>
 						</li>
