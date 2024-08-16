@@ -19,7 +19,7 @@ const Carousel = ({
 	const settings = {
 		dots: true,
 		infinite: true,
-		speed: 1000,
+		speed: 3000,
 		arrows: true,
 		slidesToShow: 1,
 		lazyLoad: "progressive" as any,
@@ -50,8 +50,8 @@ const Carousel = ({
 	const slider: any = useRef();
 
 	return (
-		<div className="relative h-[100vh] w-screen   overflow-hidden">
-			<div className="absolute bg-black opacity-50 z-[21] w-full h-full"></div>
+		<div className="relative h-[100vh] w-screen  n">
+			<div className="absolute bg-black opacity-70 z-[21] w-full h-full"></div>
 			<Slider
 				{...settings}
 				ref={slider}
@@ -75,7 +75,7 @@ const Carousel = ({
 									data-index={index}
 									priority={true}
 									alt={`slide ${index}`}
-									className=" object-top w-full  object-cover h-screen bg-center "
+									className=" object-top w-full  object-cover min-h-screen bg-center "
 									style={{
 										animation:
 											activeSlide === index

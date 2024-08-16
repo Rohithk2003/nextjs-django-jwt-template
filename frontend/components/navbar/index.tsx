@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { CiMail, CiPhone } from "react-icons/ci";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
+import Image from "next/image";
 const links = [
 	{
 		name: "Home",
@@ -14,16 +14,16 @@ const links = [
 	{
 		name: "About",
 		href: "/about-us",
-		submenu: [
-			{ name: "Our Story", href: "/about-us/our-story" },
-			{ name: "Team", href: "/about-us/team" },
-		],
+		submenu: [],
 	},
 	{
 		name: "Services",
 		href: "/services",
 		submenu: [
-			{ name: "Consulting", href: "/services/consulting" },
+			{ name: "Taxation", href: "/services/consulting" },
+			{ name: "Accounting and Bookkeeping", href: "/services/consulting" },
+			{ name: "Business", href: "/services/consulting" },
+			{ name: "CFO", href: "/services/consulting" },
 			{ name: "Auditing", href: "/services/auditing" },
 		],
 	},
@@ -38,10 +38,12 @@ export default function Navbar() {
 	const [opened, setOpened] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [dropdownOpen, setDropdownOpen] = useState(-1);
-
 	useEffect(() => {
 		const handleScroll = (e: any) => {
-			if (e.target.scrollTop > 40) {
+			const scrollTop = document.documentElement.scrollTop || window.scrollY;
+			const scrollHeight =
+				document.documentElement.scrollHeight || document.body.scrollHeight;
+			if (e.target.scrollTop > 40 || window.scrollY > 150) {
 				setScrolled(true);
 			} else {
 				setScrolled(false);
@@ -52,8 +54,7 @@ export default function Navbar() {
 			passive: true,
 			capture: true,
 		});
-
-		// Clean up the event listener on component unmount
+		window.addEventListener("scroll", handleScroll);
 		return () => {
 			document.body.removeEventListener("scroll", handleScroll);
 		};
@@ -66,37 +67,45 @@ export default function Navbar() {
 	return (
 		<div
 			className={classNames(
-				"absolute z-[4000] w-full h-32 flex justify-center items-center transition-colors duration-300",
+				"fixed z-[4000] w-full h-32 flex justify-center items-center transition-colors duration-300",
 				{
 					"bg-transparent text-white": !scrolled,
-					"bg-white text-black": scrolled,
+					"bg-white text-black shadow-xl": scrolled,
 				}
 			)}
 		>
 			<nav className="w-full h-20 font-montseraat flex flex-row justify-between items-center bg-transparent">
 				<div className="grid grid-cols-2 lg:grid-cols-4 place-items-center justify-between items-center w-full mx-5">
-					<div className="flex justify-start items-start w-full">logo</div>
+					<div className="flex justify-start w-full items-center  ">
+						<Image
+							src="/icon/logo.png"
+							alt="Unique Auditing"
+							width={200}
+							className=" object-contain  object-center w-36 h-36"
+							height={50}
+						/>
+					</div>
 					<ul className="lg:flex hidden w-full col-span-2 flex-row items-center justify-center   gap-6 font-montseraat">
 						{links.map((link, index) => (
 							<li
 								key={link.href}
 								className="relative"
-								onMouseEnter={() => handleDropdownToggle(index)}
-								onMouseLeave={() => handleDropdownToggle(-1)}
 							>
 								<div className="flex flex-row items-center">
 									<Link
 										href={link.href}
+										onMouseEnter={() => handleDropdownToggle(index)}
 										className="text-[20px] hover:underline font-montseraat"
 									>
 										{link.name}
 									</Link>
-									<MdKeyboardArrowDown />
+									{link.submenu.length > 0 && <MdKeyboardArrowDown />}
 								</div>
 								{link.submenu.length > 0 && (
 									<ul
+										onMouseLeave={() => handleDropdownToggle(index)}
 										className={classNames(
-											"absolute left-0 mt-2 p-2 w-fit bg-white shadow-lg transition-opacity duration-300 ease-in-out",
+											"absolute left-0 p-2 w-fit bg-white shadow-lg transition-opacity duration-300 ease-in-out",
 											{
 												"opacity-100 visible": dropdownOpen === index,
 												"opacity-0 invisible": dropdownOpen !== index,
@@ -107,11 +116,10 @@ export default function Navbar() {
 											<li key={submenuItem.href}>
 												<Link
 													href={submenuItem.href}
-													className="block px-4 py-2 text-black w-fit hover:bg-gray-100"
+													className="block px-4 py-2 text-black w-max hover:bg-gray-100"
 												>
 													{submenuItem.name}
 												</Link>
-												<MdKeyboardArrowDown />
 											</li>
 										))}
 									</ul>
@@ -158,7 +166,11 @@ export default function Navbar() {
 							</a>
 						</li>
 						<li>
-							<button className="bg-transparent border hover:bg-primary rounded-full  text-white hover:text-white transition-all font-montseraat duration-300 ease-in-out  px-6 font-bold py-3">
+							<button
+								className={`bg-transparent border hover:bg-primary rounded-full  ${
+									scrolled ? "text-black border-black" : "text-white"
+								} hover:text-white transition-all font-montseraat duration-300 ease-in-out  px-6 font-bold py-3`}
+							>
 								Book Consultation
 							</button>
 						</li>

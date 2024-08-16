@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .shape {
 	background-image: radial-gradient(
 		120% 120px at 50% -30px,

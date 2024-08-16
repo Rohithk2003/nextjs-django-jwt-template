@@ -8,11 +8,6 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-			},
 			colors: {
 				navbar: "#f7f9fc",
 				primary: "#223C6B",
@@ -23,7 +18,7 @@ const config: Config = {
 				arial: ["Arial", "sans-serif"],
 				roboto: ["Roboto", "sans-serif"],
 				poppins: ["Poppins", "sans-serif"],
-				montseraat:["Montserrat","sans-serif"]
+				montseraat: ["Montserrat", "sans-serif"],
 			},
 		},
 	},

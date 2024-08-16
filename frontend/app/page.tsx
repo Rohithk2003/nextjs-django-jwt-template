@@ -5,15 +5,14 @@ import Faq from "@/components/faq";
 import Hero from "@/components/hero";
 import Services from "@/components/services";
 import Link from "next/link";
+import { useEffect } from "react";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
-
 export default function Home() {
 	return (
-		<main className="relative font-montseraat">
+		<main className="relative overflow-hidden font-montseraat">
 			<Hero />
 			<AboutUs />
-			<Services />
 			<Faq />
 			<Contact />
 			<div className="fixed z-[5000] bottom-10 flex flex-col items-end gap-2 right-10">
@@ -26,7 +25,7 @@ export default function Home() {
 						color="white"
 					/>
 				</Link>
-				<Link
+				{/* <Link
 					href="/"
 					className="bg-primary gap-2  text-white p-3 w-full rounded-full size-10 flex justify-center items-center"
 				>
@@ -35,7 +34,7 @@ export default function Home() {
 						color="white"
 					/>
 					Email
-				</Link>
+				</Link> */}
 			</div>
 		</main>
 	);

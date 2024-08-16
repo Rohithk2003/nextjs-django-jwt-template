@@ -3,24 +3,28 @@ import "./hero.css";
 import Carousel from "../Carousel";
 const slides = [
 	{
-		image: "/hero/1.png",
+		image: "/hero/1.jpg",
 		alt: "Slide 1",
 	},
 	{
-		image: "/hero/2.png",
+		image: "/hero/2.jpg",
 		alt: "Slide 2",
 	},
 	{
-		image: "/hero/3.png",
+		image: "/hero/3.jpg",
 		alt: "Slide 3",
+	},
+	{
+		image: "/hero/4.jpg",
+		alt: "Slide 4",
 	},
 ];
 const Hero = () => {
 	return (
-		<div className="relative h-max w-screen bg-white">
-			<div className="shape w-full absolute z-[100] -bottom-28 h-44 "></div>
+		<div className="relative h-max max-w-screen  bg-white">
+			<div className="shape w-full  absolute z-[100] -bottom-28 h-44 "></div>
 
-			<div className="flex justify-center items-center relative w-full h-full z-[51] ">
+			<div className="flex justify-center  items-center relative w-full h-full z-[51] ">
 				<Carousel slides={slides} />
 
 				<div
