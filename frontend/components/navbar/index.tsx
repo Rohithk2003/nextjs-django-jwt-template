@@ -74,9 +74,9 @@ export default function Navbar() {
 			)}
 		>
 			<nav className="w-full h-20 font-montseraat flex flex-row justify-between items-center bg-transparent">
-				<div className="flex flex-row justify-between items-center w-full mx-5">
-					<div className="w-1/3">logo</div>
-					<ul className="lg:flex hidden w-1/3 flex-row items-center justify-center gap-6 font-montseraat">
+				<div className="grid grid-cols-2 lg:grid-cols-4 place-items-center justify-between items-center w-full mx-5">
+					<div className="flex justify-start items-start w-full">logo</div>
+					<ul className="lg:flex hidden w-full col-span-2 flex-row items-center justify-center   gap-6 font-montseraat">
 						{links.map((link, index) => (
 							<li
 								key={link.href}
@@ -96,7 +96,7 @@ export default function Navbar() {
 								{link.submenu.length > 0 && (
 									<ul
 										className={classNames(
-											"absolute left-0 mt-2 p-2 w-max bg-white shadow-lg transition-opacity duration-300 ease-in-out",
+											"absolute left-0 mt-2 p-2 w-fit bg-white shadow-lg transition-opacity duration-300 ease-in-out",
 											{
 												"opacity-100 visible": dropdownOpen === index,
 												"opacity-0 invisible": dropdownOpen !== index,
@@ -107,7 +107,7 @@ export default function Navbar() {
 											<li key={submenuItem.href}>
 												<Link
 													href={submenuItem.href}
-													className="block px-4 py-2 text-black hover:bg-gray-100"
+													className="block px-4 py-2 text-black w-fit hover:bg-gray-100"
 												>
 													{submenuItem.name}
 												</Link>
@@ -119,19 +119,28 @@ export default function Navbar() {
 							</li>
 						))}
 					</ul>
-					<div
-						onClick={() => {
-							setOpened(!opened);
-						}}
-						className={classNames(`tham lg:hidden tham-e-squeeze tham-w-6`, {
-							"tham-active": opened,
-						})}
-					>
-						<div className="tham-box">
-							<div className="tham-inner" />
+					<div className="lg:hidden flex justify-end w-full">
+						<div
+							onClick={() => {
+								setOpened(!opened);
+							}}
+							className={classNames(
+								`tham  !text-white tham-e-squeeze tham-w-6`,
+								{
+									"tham-active": opened,
+								}
+							)}
+						>
+							<div className="tham-box !text-white">
+								<div
+									className={`tham-inner  ${
+										scrolled ? "bg-black" : "bg-white"
+									}`}
+								/>
+							</div>
 						</div>
 					</div>
-					<ul className="flex w-1/3 flex-row  justify-end items-center gap-5">
+					<ul className="lg:flex hidden w-full flex-row  justify-end items-center gap-5">
 						<li className="flex flex-row items-center gap-2">
 							<a href="mailto:uniqueauditing@gmail.com">
 								<CiMail
