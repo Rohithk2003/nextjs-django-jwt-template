@@ -80,24 +80,44 @@ const FaqsCard = (props: {
 export default function FAQ() {
 	const faqsList = [
 		{
-			q: "What are some random questions to ask?",
-			a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question.",
+			q: "What services does your firm offer?",
+			a: "We offer a comprehensive range of services, including auditing, tax consultancy, financial advisory, and risk management. Our services are tailored to meet the specific needs of our clients.",
 		},
 		{
-			q: "Do you include common questions?",
-			a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator.",
+			q: "How can I schedule a consultation?",
+			a: "You can schedule a consultation by filling out the contact form on our website or by calling our office directly. Our team will get back to you promptly to arrange a convenient time.",
 		},
 		{
-			q: "Can I use this for 21 questions?",
-			a: "Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated.",
+			q: "What industries do you specialize in?",
+			a: "We have experience working with clients across various industries, including healthcare, real estate, manufacturing, technology, and financial services. Our team has the expertise to handle industry-specific challenges.",
 		},
 		{
-			q: "Are these questions for girls or for boys?",
-			a: "The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with).",
+			q: "How do you ensure confidentiality of my financial information?",
+			a: "We take confidentiality very seriously. All client information is stored securely and is only accessible by authorized personnel. We comply with all relevant data protection regulations to ensure your information remains private.",
 		},
 		{
-			q: "What do you wish you had more talent doing?",
-			a: "If you've been searching for a way to get random questions, you've landed on the correct webpage. We created the Random Question Generator to ask you as many random questions as your heart desires.",
+			q: "What are your fees for tax consultancy services?",
+			a: "Our fees are based on the complexity of the work involved and the scope of services required. We offer competitive rates and can provide a detailed quote after an initial consultation to understand your needs.",
+		},
+		{
+			q: "How do I prepare for an audit?",
+			a: "Preparation for an audit involves organizing your financial records, ensuring all documentation is complete, and being ready to answer questions about your financial transactions. Our team can guide you through the process to ensure everything is in order.",
+		},
+		{
+			q: "Can you assist with international tax issues?",
+			a: "Yes, we have expertise in handling international tax matters, including cross-border transactions, tax treaties, and compliance with foreign tax laws. We can help you navigate the complexities of international taxation.",
+		},
+		{
+			q: "What should I do if I receive a tax notice from the IRS?",
+			a: "If you receive a tax notice, it&apos;s important to respond promptly. Our team can help you understand the notice and advise you on the appropriate steps to take, including handling any necessary communications with the IRS.",
+		},
+		{
+			q: "How often should I review my tax planning strategies?",
+			a: "Tax planning should be reviewed regularly, especially when there are significant changes in your financial situation or tax laws. We recommend an annual review to ensure your strategies remain effective and aligned with your financial goals.",
+		},
+		{
+			q: "Do you offer virtual consultations?",
+			a: "Yes, we offer virtual consultations for clients who prefer remote meetings. This allows us to provide our services to clients regardless of their location while maintaining the same level of service and confidentiality.",
 		},
 	];
 

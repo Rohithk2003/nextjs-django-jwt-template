@@ -21,10 +21,8 @@ const slides = [
 ];
 const Hero = () => {
 	return (
-		<div className="relative h-max max-w-screen  bg-white">
-			<div className="shape w-full  absolute z-[100] -bottom-28 h-44 "></div>
-
-			<div className="flex justify-center  items-center relative w-full h-full z-[51] ">
+		<div className="relative  border-0 h-screen overflow-hidden max-w-screen  bg-white">
+			<div className="flex justify-center border-0   items-center  w-full h-full z-[51] ">
 				<Carousel slides={slides} />
 
 				<div
@@ -46,6 +44,7 @@ const Hero = () => {
 					</div>
 				</div>
 			</div>
+			<div className="wavy-line border-0 absolute bg-black w-full bottom-0 h-full z-[1000]"></div>
 		</div>
 	);
 };

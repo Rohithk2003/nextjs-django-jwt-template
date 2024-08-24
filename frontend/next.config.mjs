@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-	experimental: {
-		swcPlugins: [["glass-js/swc", {}]],
-	},
-};
+const nextConfig = {};
 
 export default nextConfig;

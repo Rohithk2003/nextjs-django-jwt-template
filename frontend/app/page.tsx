@@ -13,6 +13,7 @@ export default function Home() {
 		<main className="relative overflow-hidden font-montseraat">
 			<Hero />
 			<AboutUs />
+			<Services />
 			<Faq />
 			<Contact />
 			<div className="fixed z-[5000] bottom-10 flex flex-col items-end gap-2 right-10">
