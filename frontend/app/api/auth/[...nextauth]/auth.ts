@@ -5,11 +5,11 @@ import type { DecodedJWT, JWT, RefreshedToken, Token } from "next-auth/jwt";
 import { signOut } from "next-auth/react";
 import { AxiosError } from "axios";
 import api from "@/app/api";
-import { backendUrl, login } from "@/constants/urls";
+import { backendUrl, login, refreshToken } from "@/constants/urls";
 
 async function refreshAccessToken(token: JWT): Promise<JWT | null> {
 	try {
-		const res = await fetch(`${backendUrl}/api/token/refresh/`, {
+		const res = await fetch(`${backendUrl}${refreshToken}`, {
 			method: "POST",
 			body: JSON.stringify({ refresh: token.refresh }),
 			headers: { "Content-Type": "application/json" },

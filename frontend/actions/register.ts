@@ -1,6 +1,6 @@
 "use server";
 
-import { backendUrl } from "@/constants/urls";
+import { backendUrl, register } from "@/constants/urls";
 import { newUser, newUserSchema } from "@/types/types";
 
 interface registerProps {
@@ -36,7 +36,7 @@ export const registerUser = async (props: registerProps) => {
 		} as RegisterActionResultProps;
 	}
 	try {
-		const res = await fetch(`${backendUrl}/api/auth/register/`, {
+		const res = await fetch(`${backendUrl}${register}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
