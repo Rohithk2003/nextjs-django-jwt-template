@@ -8,6 +8,10 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			screens: {
+				"3xl": "1600px",
+				"4xl": "1800px",
+			},
 			colors: {
 				navbar: "#f7f9fc",
 				primary: "#223C6B",

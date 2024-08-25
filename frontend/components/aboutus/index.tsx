@@ -15,6 +15,17 @@ export default function AboutUs() {
 			} py-44 slide-in-up transition-all ease-in-out duration-500  font-montseraat w-full h-fit `}
 		>
 			<div className="max-w-screen-xl grid md:grid-cols-2  grid-cols-1 mx-auto px-4 gap-32 text-gray-600 md:px-8">
+				<div className="w-full hidden md:flex justify-end lg:pr-20">
+					<div className="h-full w-full bg-gray-300 ">
+						<Image
+							src="/aboutus/aboutus.png"
+							alt="logo"
+							className="w-full h-full object-cover object-center"
+							width={2000}
+							height={2000}
+						/>
+					</div>
+				</div>
 				<div className="w-full flex-col gap-5 flex justify-start ">
 					<div className="w-full flex flex-col gap-5">
 						<h1 className="text-3xl font-bold text-primary md:text-4xl">
@@ -23,6 +34,10 @@ export default function AboutUs() {
 						<hr className="w-32 h-1 bg-yellow-400"></hr>
 					</div>
 					<div className="w-full flex flex-col gap-4 text-lg">
+						<p className="font-extrabold text-xl">
+							Unique Auditing & Tax Consultancy LLC: Your Financial Success, Our
+							Expert Commitment
+						</p>
 						<p>
 							Unique Auditing & Tax Consultancy LLC stands as your premier
 							destination for a wide array of comprehensive financial services.
@@ -41,7 +56,7 @@ export default function AboutUs() {
 						</p>
 					</div>
 				</div>
-				<div className="w-full flex justify-end lg:pr-20">
+				<div className="w-full md:hidden flex justify-end lg:pr-20">
 					<div className="h-full w-full bg-gray-300 ">
 						<Image
 							src="/aboutus/aboutus.png"

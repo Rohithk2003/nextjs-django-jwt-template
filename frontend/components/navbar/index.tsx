@@ -38,27 +38,6 @@ export default function Navbar() {
 	const [opened, setOpened] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [dropdownOpen, setDropdownOpen] = useState(-1);
-	useEffect(() => {
-		const handleScroll = (e: any) => {
-			const scrollTop = document.documentElement.scrollTop || window.scrollY;
-			const scrollHeight =
-				document.documentElement.scrollHeight || document.body.scrollHeight;
-			if (e.target.scrollTop > 40 || window.scrollY > 150) {
-				setScrolled(true);
-			} else {
-				setScrolled(false);
-			}
-		};
-
-		document.body.addEventListener("scroll", handleScroll, {
-			passive: true,
-			capture: true,
-		});
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			document.body.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	const handleDropdownToggle = (index: number) => {
 		setDropdownOpen(dropdownOpen === index ? -1 : index);
@@ -67,25 +46,22 @@ export default function Navbar() {
 	return (
 		<div
 			className={classNames(
-				"fixed z-[4000] w-full h-32 flex justify-center items-center transition-colors duration-300",
-				{
-					"bg-transparent text-white": !scrolled,
-					"bg-white text-black shadow-xl": scrolled,
-				}
+				" z-[4000] w-full h-24 flex font-poppins justify-center items-center transition-colors duration-300",
+				"bg-white text-black shadow-xl"
 			)}
 		>
-			<nav className="w-full h-20 font-montseraat flex flex-row justify-between items-center bg-transparent">
-				<div className="grid grid-cols-2 lg:grid-cols-4 place-items-center justify-between items-center w-full mx-5">
+			<nav className="w-full h-12 font-poppins flex flex-row justify-between items-center bg-transparent">
+				<div className="flex  justify-between items-center w-full md:mx-5 mx-1 ">
 					<div className="flex justify-start w-full items-center  ">
 						<Image
 							src="/icon/logo.png"
 							alt="Unique Auditing"
 							width={200}
-							className=" object-contain  object-center w-36 h-36"
+							className=" object-contain  w-36 h-36"
 							height={50}
 						/>
 					</div>
-					<ul className="lg:flex hidden w-full col-span-2 flex-row items-center justify-center   gap-6 font-montseraat">
+					<ul className="lg:flex hidden w-full font-bold col-span-2 flex-row items-center justify-end   gap-6 font-poppins">
 						{links.map((link, index) => (
 							<li
 								key={link.href}
@@ -95,7 +71,7 @@ export default function Navbar() {
 									<Link
 										href={link.href}
 										onMouseEnter={() => handleDropdownToggle(index)}
-										className="text-[20px] hover:underline font-montseraat"
+										className="text-[18px] hover:underline font-poppins"
 									>
 										{link.name}
 									</Link>
@@ -126,6 +102,31 @@ export default function Navbar() {
 								)}
 							</li>
 						))}
+						<li className="flex flex-row items-center gap-2">
+							<a href="mailto:uniqueauditing@gmail.com">
+								<CiMail
+									className="hover:scale-110 transition-all ease-in-out duration-300 "
+									size={18}
+								/>
+							</a>
+						</li>
+						<li className="flex flex-row items-center gap-2">
+							<a href="tel:+971568303575">
+								<CiPhone
+									className="hover:scale-110 transition-all ease-in-out duration-300 "
+									size={18}
+								/>
+							</a>
+						</li>
+						<li>
+							<button
+								className={`border bg-primary rounded-lg 
+								 " border-black"
+								 text-white transition-all  duration-300 ease-in-out  px-4 font-bold py-3`}
+							>
+								Book Consultation
+							</button>
+						</li>
 					</ul>
 					<div className="lg:hidden flex justify-end w-full">
 						<div
@@ -141,45 +142,17 @@ export default function Navbar() {
 						>
 							<div className="tham-box !text-white">
 								<div
-									className={`tham-inner  ${
-										scrolled ? "bg-black" : "bg-white"
-									}`}
+									className={`tham-inner  bg-black
+									`}
 								/>
 							</div>
 						</div>
 					</div>
-					<ul className="lg:flex hidden w-full flex-row  justify-end items-center gap-5">
-						<li className="flex flex-row items-center gap-2">
-							<a href="mailto:uniqueauditing@gmail.com">
-								<CiMail
-									className="hover:scale-110 transition-all ease-in-out duration-300 "
-									size={20}
-								/>
-							</a>
-						</li>
-						<li className="flex flex-row items-center gap-2">
-							<a href="tel:+971568303575">
-								<CiPhone
-									className="hover:scale-110 transition-all ease-in-out duration-300 "
-									size={20}
-								/>
-							</a>
-						</li>
-						<li>
-							<button
-								className={`bg-transparent border hover:bg-primary rounded-full  ${
-									scrolled ? "text-black border-black" : "text-white"
-								} hover:text-white transition-all font-montseraat duration-300 ease-in-out  px-6 font-bold py-3`}
-							>
-								Book Consultation
-							</button>
-						</li>
-					</ul>
 				</div>
 			</nav>
 			<aside
 				className={classNames(
-					`fixed top-0 left-0 w-1/2 h-full bg-white z-50 transition-all duration-300`,
+					`fixed top-0 left-0 w-1/2 h-full bg-white z-[1000] transition-all duration-300`,
 					{
 						"translate-x-0": opened,
 						"-translate-x-full": !opened,

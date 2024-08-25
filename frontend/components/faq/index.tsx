@@ -99,26 +99,6 @@ export default function FAQ() {
 			q: "What are your fees for tax consultancy services?",
 			a: "Our fees are based on the complexity of the work involved and the scope of services required. We offer competitive rates and can provide a detailed quote after an initial consultation to understand your needs.",
 		},
-		{
-			q: "How do I prepare for an audit?",
-			a: "Preparation for an audit involves organizing your financial records, ensuring all documentation is complete, and being ready to answer questions about your financial transactions. Our team can guide you through the process to ensure everything is in order.",
-		},
-		{
-			q: "Can you assist with international tax issues?",
-			a: "Yes, we have expertise in handling international tax matters, including cross-border transactions, tax treaties, and compliance with foreign tax laws. We can help you navigate the complexities of international taxation.",
-		},
-		{
-			q: "What should I do if I receive a tax notice from the IRS?",
-			a: "If you receive a tax notice, it&apos;s important to respond promptly. Our team can help you understand the notice and advise you on the appropriate steps to take, including handling any necessary communications with the IRS.",
-		},
-		{
-			q: "How often should I review my tax planning strategies?",
-			a: "Tax planning should be reviewed regularly, especially when there are significant changes in your financial situation or tax laws. We recommend an annual review to ensure your strategies remain effective and aligned with your financial goals.",
-		},
-		{
-			q: "Do you offer virtual consultations?",
-			a: "Yes, we offer virtual consultations for clients who prefer remote meetings. This allows us to provide our services to clients regardless of their location while maintaining the same level of service and confidentiality.",
-		},
 	];
 
 	return (

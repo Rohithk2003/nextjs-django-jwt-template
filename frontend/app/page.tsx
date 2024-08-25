@@ -10,7 +10,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
 export default function Home() {
 	return (
-		<main className="relative overflow-hidden font-montseraat">
+		<main className="relative overflow-hidden font-poppins">
 			<Hero />
 			<AboutUs />
 			<Services />
