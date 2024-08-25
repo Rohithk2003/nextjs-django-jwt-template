@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -29,7 +30,14 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+if os.getenv("PRODUCTION") == "FALSE":
+    DEBUG = True
+else:
+    DEBUG = False
+if os.getenv("PRODUCTION") == "FALSE":
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,20 +49,23 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "rest_framework",
     "api",
+    "corsheaders",
     "authentication",
     "rest_framework_simplejwt",
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-
+backend_app = os.getenv("BACKEND_APP_NAME") or ""
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    backend_app + ".middleware.RestrictDomainAccessMiddleware",
 ]
 
 ROOT_URLCONF = "uniquebackend.urls"
@@ -81,16 +92,41 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(hours=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": True,
 }
+
+if os.getenv("USE_RDS") == "TRUE":
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv("REDIS_CACHE_DATABASE_URL"),
+            "KEY_PREFIX": "my_prefix",
+        }
+    }
+if os.getenv("USE_RDS") == "TRUE":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("PGDATABASE"),
+            "USER": os.getenv("PGUSER"),
+            "PASSWORD": os.getenv("PGPASSWORD"),
+            "HOST": os.getenv("PGHOST"),
+            "PORT": os.getenv("PGPORT", 5432),
+            "CONN_MAX_AGE": 60,
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
@@ -117,7 +153,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
@@ -127,8 +163,55 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
 
+# if os.getenv("PRODUCTION") == "FALSE":
+#     CORS_ALLOWED_ORIGINS = ["*"]
+#     CSRF_TRUSTED_ORIGINS = ["*"]
+# else:
+#     CORS_ALLOWED_ORIGINS = []
+#     CSRF_TRUSTED_ORIGINS = []
+
+CORS_ALLOW_HEADERS = [
+    "Authorization",
+    "Content-Type",
+    "credentials",
+    "access-control-allow-origin",
+    "X-CSRFToken",
+]
+if os.getenv("USE_S3") == "TRUE":
+    STATIC_URL = "static/"
+    MEDIA_S3_ACCESS_KEY_ID = os.getenv("MEDIA_S3_ACCESS_KEY_ID", default=None)
+    MEDIA_S3_SECRET_ACCESS_KEY = os.getenv("MEDIA_S3_SECRET_ACCESS_KEY", default=None)
+    MEDIA_S3_BUCKET_NAME = os.getenv("MEDIA_S3_BUCKET_NAME", default=None)
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    AWS_LOCATION = "static"
+    AWS_S3_FILE_OVERWRITE = False
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+    # STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    PUBLIC_MEDIA_LOCATION = "media"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+else:
+    STATIC_URL = "static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    MEDIA_URL = "/media/"
+CORS_ALLOW_CREDENTIALS = True
+SESSION_COOKIE_SAMESITE = False
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = True
+CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
+
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
