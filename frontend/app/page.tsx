@@ -1,4 +1,5 @@
 import AboutUs from "@/components/aboutus";
+import Blogs from "@/components/blogs";
 import Contact from "@/components/contact";
 import CurvedDiv from "@/components/Curved";
 import Faq from "@/components/faq";
@@ -15,6 +16,7 @@ export default function Home() {
 			<Hero />
 			<AboutUs />
 			<Services />
+			<Blogs />
 			<Faq />
 			<Contact />
 			<div className="fixed z-[5000] bottom-10 flex flex-col items-end gap-2 right-10">

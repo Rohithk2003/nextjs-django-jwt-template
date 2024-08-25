@@ -61,3 +61,11 @@ export const newUserSchema = z
 		path: ["confirmPassword"],
 	});
 export type newUser = z.infer<typeof newUserSchema>;
+export interface blog {
+	title: string;
+	content: string;
+	image: string;
+	created_at: string;
+	updated_at: string;
+	id: number;
+}

@@ -25,7 +25,7 @@ const Hero = () => {
 			</div>
 			<div className="bg-black lg:hidden flex absolute w-full h-full z-1 opacity-50"></div>
 			<div className="absolute flex justify-center lg:text-black text-white  items-center lg:items-start 2xl:mt-0 lg:mt-28 2xl:items-center z-50 top-0 h-full left-0 w-full lg:w-2/3 ">
-				<div className="flex flex-col justify-start gap-10 items-center lg:items-start p-2 max-w-6xl">
+				<div className="flex flex-col justify-center gap-10 items-center lg:items-start p-2 max-w-6xl">
 					<p className="2xl:text-7xl lg:text-6xl text-3xl md:text-6xl lg:text-start text-center   leading-[1.7] 2xl:leading-normal  font-[600]">
 						Empowering your Business with Expert Auditing & Financial Services.
 					</p>

@@ -7,4 +7,4 @@ from django.contrib.auth.models import User
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ("id", "title", "content", "created_at", "updated_at")
+        fields = ("id", "title", "image", "content", "created_at", "updated_at")

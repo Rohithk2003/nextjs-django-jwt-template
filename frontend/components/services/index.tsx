@@ -28,8 +28,8 @@ export default function Services() {
 	});
 
 	return (
-		<section className="bg-white min-h-[60vh]">
-			<div className="container px-6 py-10 mx-auto">
+		<section className="bg-white container mx-auto min-h-[60vh]">
+			<div className=" mx-auto">
 				<div className="w-full flex flex-col gap-5">
 					<h1 className="text-3xl font-bold text-primary md:text-4xl">
 						Our Services
