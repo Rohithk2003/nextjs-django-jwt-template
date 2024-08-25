@@ -10,4 +10,3 @@ class ListCreateBlog(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-

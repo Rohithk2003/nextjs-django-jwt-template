@@ -6,5 +6,5 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
-    path("blog/", views.ListCreateBlog.as_view(), name="blog_list"),
+    path("blogs/", views.ListCreateBlog.as_view(), name="blog_list"),
 ]
