@@ -2,8 +2,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 // import { AppDispatch } from "@/app/redux/store";
 // import { logIn } from "@/app/redux/features/auth-slice";
-import logo1 from "@/public/Icons/logo.png";
-import logo2 from "@/public/HomePage/logo2.png";
+// import logo1 from "@/public/Icons/logo.png";
+// import logo2 from "@/public/HomePage/logo2.png";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { loginUser } from "@/actions/login";
 import AlertWithType from "@/components/defaults/notification/alert";
 import LoadingButton from "@/components/defaults/LoadingButton";
+import { dashboardPage } from "@/constants/urls";
 
 export default function Login() {
 	const { data: session } = useSession();
@@ -51,7 +52,8 @@ export default function Login() {
 					"You have successfully logged in, redirecting you please wait...",
 				alertHandler: setShowAlert,
 			});
-			window.location.href = params.get("callbackUrl") || "/apartment";
+
+			window.location.href = params.get("callbackUrl") || dashboardPage;
 		}
 		setbuttonClicked(false);
 	};
@@ -65,11 +67,12 @@ export default function Login() {
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 					<Link href="/">
 						<div className="w-full object-fit justify-center items-center  h-20 flex flex-row">
-							<Image
+							{/* <Image
 								className="w-44 h-full object-contain"
 								src={logo1}
 								alt="logo1"
-							/>
+							/> */}
+							{/* put your logo here */}
 						</div>
 					</Link>
 					<div className="w-full bg-white  rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">

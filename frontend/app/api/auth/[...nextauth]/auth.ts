@@ -5,7 +5,7 @@ import type { DecodedJWT, JWT, RefreshedToken, Token } from "next-auth/jwt";
 import { signOut } from "next-auth/react";
 import { AxiosError } from "axios";
 import api from "@/app/api";
-import { backendUrl } from "@/constants/urls";
+import { backendUrl, login } from "@/constants/urls";
 
 async function refreshAccessToken(token: JWT): Promise<JWT | null> {
 	try {
@@ -53,8 +53,7 @@ export const authOptions: NextAuthOptions = {
 			},
 			async authorize(credentials) {
 				try {
-					const res = await api.post("/api/token/", credentials);
-
+					const res = await api.post(login, credentials);
 					if (res.status !== 200) throw res.data;
 					const retrievedToken: Token = res.data;
 					const { username, email, id, exp }: DecodedJWT = jwtDecode(
@@ -71,12 +70,14 @@ export const authOptions: NextAuthOptions = {
 					} as unknown as User;
 				} catch (e) {
 					const error: AxiosError = e as AxiosError;
+
 					const te = error.response?.data as any;
-					if (te.detail) {
+					if (te && te.detail) {
 						throw new Error(te.detail as string, {
 							cause: te.detail as string,
 						});
 					}
+
 					const temp: any =
 						error.response?.data || error.code === "ECONNREFUSED"
 							? "Network Error"
@@ -97,11 +98,6 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	callbacks: {
-		// async redirect({ url, baseUrl }) {
-		// 	return url.startsWith(baseUrl)
-		// 		? Promise.resolve(url)
-		// 		: Promise.resolve(baseUrl);
-		// },
 		async jwt({ token, user, trigger, account, session }) {
 			if (user && account) {
 				return user as JWT;

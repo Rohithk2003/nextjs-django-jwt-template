@@ -4,6 +4,7 @@ import CurvedDiv from "@/components/Curved";
 import Faq from "@/components/faq";
 import Hero from "@/components/hero";
 import Services from "@/components/services";
+import { backendUrl } from "@/constants/urls";
 import Link from "next/link";
 import { useEffect } from "react";
 import { BsWhatsapp } from "react-icons/bs";
