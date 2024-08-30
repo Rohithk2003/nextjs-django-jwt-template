@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"ngrok": "ngrok http --domain=rare-wrongly-snapper.ngrok-free.app http://localhost:3000",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"

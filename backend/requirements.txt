@@ -19,4 +19,4 @@ dj-database-url
 redis
 hiredis
 django-debug-toolbar
-python-decouple
+faker
